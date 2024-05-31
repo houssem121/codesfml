@@ -8,7 +8,7 @@ CXXFLAGS = -Wall -Wextra -std=c++17
 TARGET = walkerran
 
 # Fichiers source
-SRCS = main.cpp walker.cpp
+SRCS = main.cpp walker.cpp 
 
 # Fichiers objets (générés à partir des fichiers source)
 OBJS = $(SRCS:.cpp=.o)

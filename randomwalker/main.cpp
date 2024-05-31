@@ -1,5 +1,5 @@
 #include <SFML/Graphics.hpp>
-#include "walker.cpp"
+#include "walker.hh"
 int main()
 {
     walker *w = new walker();

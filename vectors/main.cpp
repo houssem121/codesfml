@@ -2,7 +2,7 @@
 #include "Bball.hh"
 
 int main() {
-    BCball *b = new BCball();
+    BCball *b = new BCball(1200,800);
     sf::RenderWindow window(sf::VideoMode(1200, 800), "SFML works!");
 
     while (window.isOpen()) {

@@ -7,7 +7,7 @@ class BCball{
     int limite = 5;
     public:
     BCball(int width,int height);
-    void update();
+    void update(sf::RenderWindow &window);
     void display(sf::RenderWindow &window);
     void checkEdges();
 };

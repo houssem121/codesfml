@@ -10,23 +10,24 @@ BCball::BCball(int width, int height) {
     velocity = sf::Vector2f(0.0f, 0.0f);
     acceleration = sf::Vector2f(0.0f, 0.0f);
 }
-void BCball::update(sf::RenderWindow &window) {
+void BCball::update(sf::RenderWindow &window, float dt) {
 
+    // Get the mouse position
     sf::Vector2i mouse_position = sf::Mouse::getPosition(window);
     sf::Vector2f mouse(static_cast<float>(mouse_position.x), static_cast<float>(mouse_position.y));
     mouse = check_bounds(mouse, window);
-    // std::cout<<"x:\n"<<mouse.x;
-    sf::Vector2f direction = mouse - location ; //vec to mouse location sorry
 
-    sf::Vector2f Normalized_Direction = Normalize(direction);//normalize the vector for smooth animation and
-
-    sf::Vector2f mul_direction = Normalized_Direction * 0.1f;//take a portion from that u_n vector
+    // Calculate direction to mouse
+    sf::Vector2f direction = mouse - location;
+    sf::Vector2f Normalized_Direction = Normalize(direction);
+    sf::Vector2f mul_direction = Normalized_Direction  *  100.0f ;
     sf::Vector2f accelerations = mul_direction;
 
-    velocity = velocity + accelerations; //set acceleration
+    // Update velocity and position using dt
+    velocity += accelerations * dt; //dt is 1/60 so its very small variation
+    location += velocity * dt + accelerations * dt * dt * 0.5f ;
 
-    location = location + velocity; //set position from velocity
-  //  velocity = velocity - accelerations; //like this we can stop a the mouse location if we remove it when the velocity will be huge the more get closer the position and then start to slow down
+
 }
 void BCball::display(sf::RenderWindow &window)
 {
